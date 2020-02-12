@@ -7,5 +7,26 @@
 </head>
 <body>
     <h1>Home</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Servico</th>
+                <th>Valor</th>
+                <th>Medida</th>
+                <th>Tipo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for(var i=0; i<servicos.length; i++){ %>
+                <tr>
+                    <td><%=servicos[i].servico%></td>
+                    <td><%=servicos[i].valor%></td>
+                    <td><%=servicos[i].medida%></td>
+                    <td><%=servicos[i].tipo%></td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
 </body>
 </html>
