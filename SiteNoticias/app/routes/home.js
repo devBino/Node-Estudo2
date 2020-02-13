@@ -1,4 +1,4 @@
-module.exports = function(app,con){
+module.exports = function(app){
 
     var sql = "select *,date_format(dtNoticia,'%d/%m/%Y') as Data from noticia"
 
