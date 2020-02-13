@@ -1,24 +1,22 @@
-module.exports = function(app){
-    
+module.exports = function(app,con){
+
+    var sql = "select *,date_format(dtNoticia,'%d/%m/%Y') as Data from noticia"
+
     app.get('/',(req,res)=>{
+        let con = app.configs.banco()
 
-        let mysql   = require('mysql')
-        let con     = mysql.createConnection({
-            host:'127.0.0.1',
-            user:'fer',
-            password:'fer',
-            database:'pinturas'
-        })
-
-        con.connect()
-        
-        con.query('select * from pt_servico', function(error,result){
-            res.render('home/index',{servicos:result})
+        con.query(sql, (error,result)=>{
+            res.render('home/index',{noticias:result})
         })
     })
 
     app.get('/home', (req,res)=>{
-        res.render('home/index')
+        
+        let con = app.configs.banco()
+
+        con.query(sql, (error,result)=>{
+            res.render('home/index',{noticias:result})
+        })
     })
     
 }

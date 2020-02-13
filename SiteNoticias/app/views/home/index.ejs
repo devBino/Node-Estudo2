@@ -11,19 +11,19 @@
     <table>
         <thead>
             <tr>
-                <th>Servico</th>
-                <th>Valor</th>
-                <th>Medida</th>
-                <th>Tipo</th>
+                <th>Titulo</th>
+                <th>Data</th>
+                <th>Url</th>
+                <th>Categoria</th>
             </tr>
         </thead>
         <tbody>
-            <% for(var i=0; i<servicos.length; i++){ %>
+            <% for(var i=0; i<noticias.length; i++){ %>
                 <tr>
-                    <td><%=servicos[i].servico%></td>
-                    <td><%=servicos[i].valor%></td>
-                    <td><%=servicos[i].medida%></td>
-                    <td><%=servicos[i].tipo%></td>
+                    <td><%=noticias[i].dsTitulo%></td>
+                    <td><%=noticias[i].Data%></td>
+                    <td><%=noticias[i].urlNoticia%></td>
+                    <td><%=noticias[i].categoria%></td>
                 </tr>
             <% } %>
         </tbody>
