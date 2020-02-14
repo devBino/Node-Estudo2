@@ -3,30 +3,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    
     <title>Home</title>
 </head>
 <body>
-    <h1>Home</h1>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Titulo</th>
-                <th>Data</th>
-                <th>Url</th>
-                <th>Categoria</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% for(var i=0; i<noticias.length; i++){ %>
-                <tr>
-                    <td><%=noticias[i].dsTitulo%></td>
-                    <td><%=noticias[i].Data%></td>
-                    <td><%=noticias[i].urlNoticia%></td>
-                    <td><%=noticias[i].categoria%></td>
-                </tr>
-            <% } %>
-        </tbody>
-    </table>
+    <div class="container">
+        <nav class="navbar navbar-default bg-dark text text-light">
+            <div class="row">
+                <div class="col">
+                    <h1>Home</h1>
+                </div>
+                <div class="col">
+                    <a href="/noticia" class="btn btn-outline-info float-right">Noticias</a>
+                </div>
+            </div>
+        </nav>
+    
 </body>
 </html>

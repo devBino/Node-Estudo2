@@ -1,0 +1,99 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <title>Noticias</title>
+</head>
+<body>
+
+<div class="container">
+    <nav class="navbar navbar-default bg-dark text text-light">
+        <div class="row">
+            <div class="col">
+                <h1>Noticias</h1>
+            </div>
+            <div class="col">
+                <a href="/home" class="btn btn-outline-info float-right">Inicio</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <form action="/noticia/salvar" method="post">
+                
+                <div class="row">
+                    <div class="col-sm-12 form-group">
+                        <label>Titulo</label>
+                        <input type="text" name="dsTitulo" class="form-control form-control-sm" placeholder="Titulo Noticias">
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-sm-12 form-group">
+                        <label>Data</label>
+                        <input type="date" name="dtNoticia"  class="form-control form-control-sm">
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-sm-12 form-group">
+                        <label>Url</label>
+                        <input type="text" name="urlNoticia" class="form-control form-control-sm" placeholder="Url Noticia">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12 form-group">
+                        <label>Categoria</label>
+                        <input type="text" name="categoria" class="form-control form-control-sm" placeholder="Categoria">
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-sm-12">
+                        <button class="btn btn-outline-info float-right">SALVAR</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+        <div class="col-sm-12">
+
+            <table class="table table-sm table-bordered table-striped">
+                <thead>
+                    <tr class="table-active">
+                        <th>Titulo</th>
+                        <th>Data</th>
+                        <th>Url</th>
+                        <th>Categoria</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(var i=0; i<noticias.length; i++){ %>
+                        <tr>
+                            <td><%=noticias[i].dsTitulo%></td>
+                            <td><%=noticias[i].Data%></td>
+                            <td><%=noticias[i].urlNoticia%></td>
+                            <td><%=noticias[i].categoria%></td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
