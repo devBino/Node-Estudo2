@@ -13,6 +13,7 @@ consign()
     .include('app/routes')
     .then('configs/banco.js')
     .then('app/models')
+    .then('app/controllers')
     .into(app)
 
 module.exports = app
