@@ -4,22 +4,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     
+    <script src="js/jsquery.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css">
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js'></script>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+
     <title>Home</title>
 </head>
 <body>
     <div class="container">
-        <nav class="navbar navbar-default bg-dark text text-light">
-            <div class="row">
-                <div class="col">
-                    <h1>Home</h1>
-                </div>
-                <div class="col">
-                    <a href="/noticia" class="btn btn-outline-info float-right">Noticias</a>
-                </div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a href="" class="navbar-brand">
+                Portal de Notícias Node
+            </a>
+
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarSide">
+                <span class="navbar-toggler-icon"><i></i></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSide">
+                <ul class="navbar-nav ml-auto">
+                    
+                    <li class="nav-item">
+                        <a id="menu-admin" href="/home" class="nav-link">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="menu-admin" href="/noticia" class="nav-link">Cadastro Noticias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="menu-admin" href="" class="nav-link"></a>
+                    </li>
+                </ul>
             </div>
         </nav>
-    
+
+
+        <h5 class="text text-secondary">Listagem Notícias</h5>
+
+        <% for(var i=0; i<noticias.length; i++){ %>
+            <div class="card">
+                <div class="card-header">
+                    <h6 class="text text-secondary"><a href="<%=noticias[i].urlNoticia%>" target="_blank" class="text text-secondary"><%=noticias[i].dsTitulo%></a></h6>
+                </div>
+            </div>
+        <% } %>
+
+    </div>
 </body>
 </html>

@@ -8,4 +8,8 @@ module.exports = function(app){
         app.app.controllers.noticia.salvar(app,req,res)
     })
 
+    app.get('/noticia/deletar/:id',(req,res)=>{
+        app.app.controllers.noticia.deletar(app,req,res)
+    })
+
 }
