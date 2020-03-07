@@ -82,21 +82,8 @@
 			
 			<div class="row participantes" id="participantes" style="display:none">
 				<div class="col-md-1"></div>
-				<div class="col-md-10">
-					<span class="participante">
-						<img src="images/ico_usuario.png" />
-						Jorge
-					</span>
+				<div class="col-md-10" id="pessoas">
 					
-					<span class="participante">
-						<img src="images/ico_usuario.png" />
-						José
-					</span>
-					
-					<span class="participante">
-						<img src="images/ico_usuario.png" />
-						Fernando
-					</span>
 				</div>
 				<div class="col-md-1"></div>
                 
@@ -141,12 +128,63 @@
 				$('#dialogos').append(html)
 			})
 
+			socket.on('participantesParaCliente',function(data){
+				
+				var rows = $('.participante')
+				
+				var achou = false
+
+				for( const row of rows ){
+					let strApelido = $(row).attr('data-apelido')
+
+					if(strApelido == data.apelido){
+						achou = true
+						break
+					}
+				}
+
+				if(achou){
+					return
+				}
+
+				var html = `<span class="participante" data-apelido="${data.apelido}">`
+				html = `${html}<img src="images/ico_usuario.png">`
+				html = `${html}<p>${data.apelido}</p>`
+				html = `${html}</span>`
+
+				$('#pessoas').append(html)
+			})
+
 
 			$('#envia_msg').click(function(){
 				socket.emit(
 					'msgParaServidor',
 					{apelido:$('#hdApelido').val(),mensagem:$('#mensagem').val()}
 				)
+
+				setTimeout(function(){
+					$('#mensagem').val('').trigger('change')
+					window.scrollTo(0,document.body.scrollHeight)
+				},500)
+			})
+
+			$('#mensagem').change(function(){
+				var strMsg = $(this).val()
+
+				if( strMsg==undefined || strMsg==null || strMsg=='' ){
+					return false
+				}
+
+				socket.emit(
+					'msgParaServidor',
+					{apelido:$('#hdApelido').val(),mensagem:$('#mensagem').val()}
+				)
+
+				setTimeout(function(){
+					$('#mensagem').val('').trigger('change')
+					window.scrollTo(0,document.body.scrollHeight)
+				},500)
+
 			})
 
 		</script>
