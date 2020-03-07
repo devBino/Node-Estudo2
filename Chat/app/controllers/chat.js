@@ -12,16 +12,25 @@ module.exports.inicia_chat = function(app,req,res){
     //exemplo simples de validação manual
     var erros = []
 
-    if( strApelido.length < 8 ){
+    if( strApelido.length < 5 ){
         erros.push("O tamanho não pode ser menor que 8...")
     }
 
     if( erros.length > 0 ){
         res.render('index',{erros:erros})
         return
-    }else{
-        res.render('chat')
     }
+    
+
+    app.get('io').emit(
+        'msgParaCliente',
+        {
+            apelido:strApelido,
+            'mensagem':`${strApelido} está online`
+        }
+    )
+    
+    res.render('chat',{dadosForm:dadosForm})
 
 }
 

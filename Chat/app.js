@@ -6,10 +6,23 @@ var server = app.listen(3000, ()=>{
 
 let io = require('socket.io').listen(server)
 
-io.on('connection',(socket)=>{
-    console.log('inicio via socket...')
+app.set('io',io)
 
+io.on('connection',(socket)=>{
+    
     socket.on('disconnect',()=>{
-        console.log('saiu fora...')
+    
+    })
+
+    socket.on('msgParaServidor',(data)=>{
+        socket.emit('msgParaCliente',{
+            apelido:data.apelido,
+            mensagem:data.mensagem
+        })
+
+        socket.broadcast.emit('msgParaCliente',{
+            apelido:data.apelido,
+            mensagem:data.mensagem
+        })
     })
 })
