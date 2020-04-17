@@ -1,11 +1,13 @@
 let mysql = require('mysql')
+let env = require('./env')
 
 let funcaoDb = function(){
+
     let con = mysql.createConnection({
-        host:'127.0.0.1',
-        user:'fer',
-        password:'fer',
-        database:'noticias'
+        host:env.con.host,
+        user:env.con.user,
+        password:env.con.user,
+        database:env.con.database
     })
 
     return con
